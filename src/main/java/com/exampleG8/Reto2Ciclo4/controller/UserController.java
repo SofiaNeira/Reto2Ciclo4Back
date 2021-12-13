@@ -68,21 +68,29 @@ public class UserController {
         
     }
     
+//    @PutMapping("/update")
+//    public ResponseEntity<User> updateUser(@RequestBody User user) {
+//        
+//        User upUser = UserService.update(user);
+//        
+//        return new ResponseEntity(upUser, HttpStatus.OK);
+//    }
+    
     @PutMapping("/update")
-    public ResponseEntity<User> updateUser(@RequestBody User user) {
-        
-        User upUser = UserService.update(user);
-        
-        return new ResponseEntity(upUser, HttpStatus.OK);
+    @ResponseStatus(HttpStatus.CREATED)
+    public User update(@RequestBody User user) {
+        return UserService.update(user);
     }
     
     
+    
     @DeleteMapping("/{id}")
-    public ResponseEntity<User> delete(@PathVariable Integer id) {
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void  delete(@PathVariable Integer id) {
         
         UserService.delete(id);
         
-        return null;
+//        return null;
     }
     
     @ExceptionHandler(Exception.class)

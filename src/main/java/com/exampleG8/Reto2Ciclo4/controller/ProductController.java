@@ -56,7 +56,7 @@ public class ProductController {
     public ResponseEntity<Clothe> updateProduct(@RequestBody Clothe prod) {
         Clothe upProduct = ProdService.update(prod);
         
-        return new ResponseEntity(upProduct, HttpStatus.OK);
+        return new ResponseEntity(upProduct, HttpStatus.CREATED);
     }
     
     
